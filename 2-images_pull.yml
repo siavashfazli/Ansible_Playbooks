@@ -5,17 +5,16 @@
   vars_files:
     - /etc/ansible/arvan_vars.yml
   tasks:
-  - name: Log into DockerHub
-    community.docker.docker_login:
-      username: # Your docker username
-      password: "{{ docker_pass }}"
+  # - name: Log into DockerHub
+  #   community.docker.docker_login:
+  #     username: siavashfazlikhalaf
+  #     password: "{{ docker_pass }}"
 
   - name: Pull an image
     community.docker.docker_image:
       name: "{{item}}"
       source: pull
     loop:
-      - hello-world
-      - nginx:1.25.3
-      - certbot/certbot:v2.8.0
+      - docker.arvancloud.ir/nginx:1.25.3
+      - docker.arvancloud.ir/certbot/certbot:v2.8.0
 

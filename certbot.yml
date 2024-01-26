@@ -5,13 +5,14 @@
     remote_user: ubuntu
     tasks:
       - name: Generate SSL for domain.
+        tags: generate
         ansible.builtin.command: 
           chdir: /opt/simple-docker-app
           cmd: >
             docker compose run --rm certbot certonly
             --webroot --webroot-path /var/www/certbot/
-            -d narinet.ir --email # Your Email
-            --agree-tos --eff-email --force-renewal --dry-run
+            -d siavashfazli.ir --email siavashfazlikhalaf@gmail.com
+            --agree-tos --eff-email --force-renewal 
       - name: Create a cron job for Certbot renewal.
         tags: renew
         cron:

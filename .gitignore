@@ -1,1 +1,3 @@
 .vscode/
+ansible.cfg
+arvan_vars.yml

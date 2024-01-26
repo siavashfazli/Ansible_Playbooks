@@ -2,8 +2,8 @@
 - hosts: arvan
   become: true
   gather_facts: False
-  vars_files:
-    - /etc/ansible/arvan_vars.yml
+  # vars_files:
+  #   - /etc/ansible/arvan_vars.yml
   tasks:
   # - name: Log into DockerHub
   #   community.docker.docker_login:

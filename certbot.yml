@@ -13,6 +13,18 @@
             --webroot --webroot-path /var/www/certbot/
             -d siavashfazli.ir --email siavashfazlikhalaf@gmail.com
             --agree-tos --eff-email --force-renewal 
+
+      - name: Append SSL block to nginx conf file.
+        ansible.builtin.command: 
+          chdir: /opt/simple-docker-app/conf.d
+          cmd: echo SSL_block.conf.temp >> web_app.conf
+
+      - name: Restart Nginx container (web_app)
+        community.docker.docker_compose:
+          project_src: /opt/simple-docker-app/
+          build: false
+          restarted: true
+          
       - name: Create a cron job for Certbot renewal.
         tags: renew
         cron:

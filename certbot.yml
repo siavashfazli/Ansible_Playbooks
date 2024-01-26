@@ -6,26 +6,25 @@
     tasks:
       - name: Generate SSL for domain.
         tags: generate
-        ansible.builtin.command: 
-          chdir: /opt/simple-docker-app
-          cmd: >
-            docker compose run --rm certbot certonly
-            --webroot --webroot-path /var/www/certbot/
-            -d siavashfazli.ir --email siavashfazlikhalaf@gmail.com
-            --agree-tos --eff-email --force-renewal 
-
+        shell: |
+          docker compose -f /opt/simple-docker-app/docker-compose.yml run --rm certbot certonly \
+            --webroot --webroot-path /var/www/certbot/ \
+            -d narinidea.ir --email s.fazli@naringames.com \
+            --agree-tos --eff-email --force-renewal
+        run_once: true
       - name: Append SSL block to nginx conf file.
-        ansible.builtin.command: 
-          chdir: /opt/simple-docker-app/conf.d
-          cmd: echo SSL_block.conf.temp >> web_app.conf
-
+        tags: append
+        shell: |
+          cat /opt/simple-docker-app/conf.d/SSL_block.conf.temp >> /opt/simple-docker-app/conf.d/web_app.conf
+        run_once: true
       - name: Restart Nginx container (web_app)
         community.docker.docker_compose:
           project_src: /opt/simple-docker-app/
           build: false
-          restarted: true
+          recreate: smart
           
       - name: Create a cron job for Certbot renewal.
+        run_once: true  
         tags: renew
         cron:
           cron_file: /etc/cron.d/renew

@@ -6,9 +6,10 @@
     - name: Install docker and docker-compose python library.
       ansible.builtin.pip:
         name: 
-          - docker
+          - docker==6.1.3
           - docker-compose
     - name: Clone a github repository
+      tags: git
       git:
        repo: https://github.com/siavashfazli/simple-docker-app.git
        dest: /opt/simple-docker-app
@@ -20,9 +21,8 @@
         name: nginx    
     
     - name: Start web_app container.
+      tags: container
       community.docker.docker_compose:
-        build: true
-        state: present 
-        project_src: /opt/simple-docker-app
-        # files:
-        #   - docker-compose.yml
+        project_src: /opt/simple-docker-app/
+        files:
+          - docker-compose.yml

@@ -1,0 +1,10 @@
+[defaults]
+inventory = /etc/ansible/hosts
+private_key_file = ~/.ssh/******.pem
+remote_user = ubuntu
+#gathering = False
+
+[ssh_connection]
+pipelining = True
+
+

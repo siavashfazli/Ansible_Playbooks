@@ -1,0 +1,26 @@
+---
+  - hosts: arvan
+    gather_facts: false
+    become: true
+    remote_user: ubuntu
+    tasks:
+      - name: Generate SSL for domain.
+        ansible.builtin.command: 
+          chdir: /opt/simple-docker-app
+          cmd: >
+            docker compose run --rm certbot certonly
+            --webroot --webroot-path /var/www/certbot/
+            -d narinet.ir --email # Your Email
+            --agree-tos --eff-email --force-renewal --dry-run
+      - name: Create a cron job for Certbot renewal.
+        tags: renew
+        cron:
+          cron_file: /etc/cron.d/renew
+          name: "SSL Renew"
+          minute: "0"
+          hour: "0"
+          day: "1"
+          month: "*/1"  # Run every month
+          weekday: "*"
+          user: root
+          job: "docker-compose -f /opt/simple-docker-app/docker-compose.yml run --rm certbot renew"

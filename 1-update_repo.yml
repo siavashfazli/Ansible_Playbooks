@@ -1,0 +1,13 @@
+---
+- hosts: arvan
+  become: true
+  gather_facts: False
+  tasks:
+    - name: Update repository and install packages
+      apt:
+        name:
+          - ca-certificates
+          - curl
+          - gnupg
+        update_cache: yes
+

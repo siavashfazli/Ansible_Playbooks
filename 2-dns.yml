@@ -1,0 +1,11 @@
+---
+- hosts: arvan
+  become: true
+  gather_facts: False
+  tasks:
+  - name: Add nameserver to the beginning of resolv.conf
+    ansible.builtin.blockinfile:
+      path: /etc/resolv.conf
+      block: |
+        nameserver 10.202.10.202
+      insertbefore: BOF

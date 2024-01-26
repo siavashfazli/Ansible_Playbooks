@@ -1,0 +1,22 @@
+---
+- hosts: arvan
+  gather_facts: false
+  become: true
+  tasks:
+    - name: Clone a github repository
+      git:
+       repo: https://github.com/siavashfazli/simple-docker-app.git
+       dest: /opt/simple-docker-app
+       clone: yes
+       update: yes
+
+    - name: Start web_app container.
+      community.docker.docker_compose:
+        build: true
+        state: present 
+        project_src: /opt/simple-docker-app
+        # files:
+        #   - docker-compose.yml
+    - name: Create network
+      community.docker.docker_network:
+        name: nginx

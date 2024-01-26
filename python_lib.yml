@@ -1,0 +1,11 @@
+---
+  - hosts: arvan
+    gather_facts: false
+    become: true
+    remote_user: ubuntu
+    tasks:
+      - name: Install docker and docker-compose python library.
+        ansible.builtin.pip:
+          name: 
+            - docker
+            - docker-compose

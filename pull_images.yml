@@ -7,7 +7,7 @@
   tasks:
   # - name: Log into DockerHub
   #   community.docker.docker_login:
-  #     username: siavashfazlikhalaf
+  #     username: 
   #     password: "{{ docker_pass }}"
 
   - name: Pull an image

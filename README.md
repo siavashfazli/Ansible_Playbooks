@@ -1,28 +1,32 @@
 # Nginx deployment with Automated certbot SSL generation using Ansible Playbooks.
-You have to clone this project on your host machine that Ansible has been installed.
-Your target project is accessable here:
+You have to clone this project on your host machine once Ansible has been installed.
+Your target project is accessible here:
 
 https://github.com/siavashfazli/simple-docker-app
 
-In future I will automat docker installation with Ansible too, but currently we have to install it manually.
-
-# Docker installation on target server
-At first step you have to install Docker and related images on your target(Production) server. My suggestion is Docker official document:
+# Docker installation on the target server
+I have Automated Docker installation. with the ```install_docker.yml``` playbook you can easily install docker.
+However, if you have any problem with the playbook you can install docker with its document.
 
 https://docs.docker.com/engine/install/
 
 
 # Project Docker images
-Note 1 : I storngly recommend to **Don't** use **latest** version. choose your desired version to prevent any conflict and unpreidicted situations.
-Note 2 : If you encountered with any restriction or sanction during pulling images, replace these addresses in ```dns.yml``` file.
+Note 1: I strongly recommend to **Don't** use **latest** version. choose your desired version to prevent any conflict and unpredicted situations.
+Note 2: If you encountered any restriction or sanction during pulling images, replace these addresses in the ```dns.yml``` file or use local docker registries.
 
  * 178.22.122.100
  * 10.202.10.202
  * 78.157.42.100
- * 
-Also these are images that I used for my project:
+
+Also, these are images that I used for my project:
 
 https://hub.docker.com/_/nginx
 https://hub.docker.com/r/certbot/certbot
 
-Probably you have to run ```python_lib.yml``` playbook. because ansible requires ```docker``` and ```docker-compose``` libraries to execute container related commands.
+# Start Container
+Simply just run ```start_container.yml```. just check **Dockerfile** to ensure everything is ok.
+
+
+# Generate SSL
+This step is a little bit tricky. The first task is generating certificates. fill in your email and domain and once check the whole task.

@@ -29,4 +29,4 @@ Simply just run ```start_container.yml```. just check **Dockerfile** to ensure e
 
 
 # Generate SSL
-This step is a little bit tricky. The first task is generating certificates. fill in your email and domain and once check the whole task.
+This step is a little bit tricky. In ```certbot.yml```, the first task is generating certificates then the SSL block is added to the main conf file. fill in your email and domain and once check the whole task. 

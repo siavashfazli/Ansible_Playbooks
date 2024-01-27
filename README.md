@@ -6,7 +6,7 @@ https://github.com/siavashfazli/simple-docker-app
 
 # Docker installation on the target server
 I have Automated Docker installation. with the ```install_docker.yml``` playbook you can easily install docker.
-However, if you have any problem with the playbook you can install docker with its document.
+However, if you have any problem with the playbook use the official docker document.
 
 https://docs.docker.com/engine/install/
 

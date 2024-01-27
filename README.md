@@ -26,8 +26,8 @@ https://hub.docker.com/_/nginx
 
 https://hub.docker.com/r/certbot/certbot
 
-# Start Container
-Simply just run ```start_container.yml```. just check **Dockerfile** to ensure everything is ok.
+# Start Container 
+Simply just run ```start_container.yml```. just check The ```docker-compose.yml``` and ```Dockerfile``` to ensure everything is ok.
 
 
 # Generate SSL

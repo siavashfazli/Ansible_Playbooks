@@ -1,6 +1,6 @@
 # Nginx deployment with Automated certbot SSL generation using Ansible Playbooks.
-You have to clone this project on your host machine once Ansible has been installed.
-Your target project is accessible here:
+Clone this project on your host machine once Ansible has been installed.
+target project located here:
 
 https://github.com/siavashfazli/simple-docker-app
 

@@ -12,6 +12,7 @@ https://docs.docker.com/engine/install/
 
 
 # Project Docker images
+Run ```pull_images.yml``` to pull images.
 Note 1: I strongly recommend to **Don't** use **latest** version. choose your desired version to prevent any conflict and unpredicted situations.
 
 Note 2: If you encountered any restriction or sanction during pulling images, replace these addresses in the ```dns.yml``` file or use local docker registries.
